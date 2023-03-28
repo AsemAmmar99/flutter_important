@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_important/core/constants.dart' as screens;
 import 'package:flutter_important/presentation/widgets/default_material_button.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -51,7 +52,7 @@ class _LoginScreenState extends State<LoginScreen> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               InkWell(
-                onTap: (){
+                onTap: () {
                   setState(() {
                     Fluttertoast.showToast(
                         msg: "Image tapped!",
@@ -171,6 +172,9 @@ class _LoginScreenState extends State<LoginScreen> {
                           textColor: Colors.white,
                           fontSize: 16.sp);
                     });
+                    Navigator.pushNamedAndRemoveUntil(
+                        context, screens.homeScreen, (route) => false,
+                        arguments: {'name': userNameController.text, 'password': passwordController.text});
                   }
                 },
                 margin: EdgeInsets.symmetric(horizontal: 9.w, vertical: 4.h),

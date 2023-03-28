@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_important/presentation/screens/splash_screen.dart';
+import 'package:flutter_important/presentation/router/app_router.dart';
 import 'package:sizer/sizer.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({super.key});
+
+  final AppRouter appRouter = AppRouter();
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +21,7 @@ class MyApp extends StatelessWidget {
           theme: ThemeData(
             primarySwatch: Colors.deepPurple,
           ),
-          home: const SplashScreen(),
+          onGenerateRoute: appRouter.onGenerateRoute,
         );
       },
     );

@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+
+  final String myName;
+
+  const HomeScreen({Key? key, required this.myName}) : super(key: key);
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -15,8 +18,8 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          onPressed: () {},
-          icon: const Icon(Icons.ac_unit),
+          onPressed: () => Navigator.pop(context),
+          icon: const Icon(Icons.arrow_back_ios),
         ),
         title: const Text('Home Screen'),
         centerTitle: true,
@@ -38,7 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
               color: Colors.deepOrange,
             ),
             Text(
-              'My name is Asem',
+              'My name is ${widget.myName}',
               style: TextStyle(fontSize: 18.sp),
             ),
             Icon(
