@@ -266,7 +266,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   children: [
                     Flexible(
                       child: DefaultText(
-                        text: 'Don have an account?',
+                        text: "Don't have an account?",
                         textSize: 12.sp,
                         textColor: Colors.black,
                       ),
