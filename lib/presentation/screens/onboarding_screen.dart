@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_important/core/constants.dart' as screens;
-import 'package:flutter_important/core/my_cache_keys.dart';
-import 'package:flutter_important/data/data_source/local/my_cache.dart';
+import 'package:flutter_important/business_logic/providers/onboarding_provider.dart';
 import 'package:flutter_important/presentation/views/onboarding_item.dart';
 import 'package:flutter_important/presentation/widgets/default_material_button.dart';
 import 'package:flutter_important/presentation/widgets/default_text.dart';
+import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-import '../../data/models/onboarding_model.dart';
 import '../widgets/default_text_button.dart';
 
 class OnBoardingScreen extends StatefulWidget {
@@ -20,32 +18,17 @@ class OnBoardingScreen extends StatefulWidget {
 
 class _OnBoardingScreenState extends State<OnBoardingScreen> {
 
-  PageController onBoardingPageController = PageController();
+  late OnBoardingProvider providerForData;
+  late OnBoardingProvider providerForMethods;
 
-  bool isLast = false;
 
-  final List<OnBoardingModel> onBoardingList = [
-    OnBoardingModel(
-      image: 'assets/sammy-finance.gif',
-      title: 'First Title',
-      body: 'TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTest',
-    ),
-    OnBoardingModel(
-      image: 'assets/sammy-searching.gif',
-      title: 'Second Title',
-      body: 'TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTest',
-    ),
-    OnBoardingModel(
-      image: 'assets/sammy-service-support.gif',
-      title: 'Third Title',
-      body: 'TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTest',
-    ),
-  ];
-
-  void finishOnBoarding(BuildContext context){
-    MyCache.putBool(key: MyCacheKeys.isOnBoardingViewed, value: isLast);
-    Navigator.pushNamedAndRemoveUntil(context, screens.loginScreen, (route) => false);
+  @override
+  void didChangeDependencies() {
+    providerForMethods = Provider.of<OnBoardingProvider>(context, listen: false);
+    providerForData = Provider.of<OnBoardingProvider>(context, listen: true);
+    super.didChangeDependencies();
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -58,12 +41,12 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 2.w),
             child: Visibility(
-              visible: !isLast,
+              visible: !providerForData.isLast,
               child: CircleAvatar(
                 radius: 20.sp,
                 backgroundColor: Colors.orangeAccent,
                 child: DefaultTextButton(
-                  onPressed: () => finishOnBoarding(context),
+                  onPressed: () => providerForMethods.finishOnBoarding(context),
                   child: const DefaultText(
                     text: 'Skip',
                     textColor: Colors.white,
@@ -94,28 +77,18 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
             ),
             Expanded(
                 child: PageView.builder(
-                    itemBuilder: (context, index) => OnBoardingItem(model: onBoardingList[index]),
-                  itemCount: onBoardingList.length,
+                    itemBuilder: (context, index) => OnBoardingItem(model: providerForData.onBoardingList[index]),
+                  itemCount: providerForData.onBoardingList.length,
                   physics: const BouncingScrollPhysics(),
-                  controller: onBoardingPageController,
-                  onPageChanged: (index){
-                      if(index == onBoardingList.length-1){
-                        setState(() {
-                          isLast = true;
-                        });
-                      }else{
-                        setState(() {
-                          isLast = false;
-                        });
-                      }
-                  },
+                  controller: providerForData.onBoardingPageController,
+                  onPageChanged: (index) => providerForMethods.checkIfLast(index),
                 ),
             ),
             Padding(
               padding: EdgeInsets.only(bottom: 6.h),
               child: SmoothPageIndicator(
-                  controller: onBoardingPageController,
-                  count: onBoardingList.length,
+                  controller: providerForData.onBoardingPageController,
+                  count: providerForData.onBoardingList.length,
                   effect: ExpandingDotsEffect(
                     dotColor: Colors.orangeAccent,
                     activeDotColor: Colors.teal,
@@ -126,9 +99,9 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   ),
               ),
             ),
-            if(isLast)
+            if(providerForData.isLast)
             DefaultMaterialButton(
-                onPressed: () => finishOnBoarding(context),
+                onPressed: () => providerForMethods.finishOnBoarding(context),
                 backgroundColor: Colors.transparent,
               margin: EdgeInsets.symmetric(horizontal: 8.w),
               height: 6.h,

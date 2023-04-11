@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_important/presentation/widgets/default_text.dart';
 import 'package:sizer/sizer.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -11,10 +12,54 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       backgroundColor: Colors.teal,
+      appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {
+            _scaffoldKey.currentState!.openDrawer();
+          },
+          icon: const Icon(Icons.more_vert_outlined),
+        ),
+      ),
+      drawer: Drawer(
+        backgroundColor: Colors.deepPurple,
+        width: 60.w,
+        child: ListView(
+          children: [
+            Padding(
+              padding: EdgeInsets.only(top: 3.h),
+              child: DrawerHeader(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                    children: [
+                  const Icon(Icons.supervised_user_circle),
+                  DefaultText(
+                    text: 'Asem',
+                    textSize: 20.sp,
+                  ),
+                  const Expanded(child: Divider(height: 1, color: Colors.white,))
+                ]),
+              ),
+            ),
+            ListTile(
+              leading: const Icon(Icons.settings),
+              title: DefaultText(text: 'Settings', textSize: 10.sp,),
+              trailing: const Icon(Icons.arrow_forward_ios_outlined),
+            ),
+            ListTile(
+              leading: const Icon(Icons.favorite),
+              title: DefaultText(text: 'Favourites', textSize: 10.sp,),
+              trailing: const Icon(Icons.arrow_forward_ios_outlined),
+            ),
+          ],
+        ),
+      ),
       // appBar: AppBar(
       //   leading: IconButton(
       //     onPressed: () => Navigator.pop(context),
