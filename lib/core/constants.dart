@@ -8,3 +8,4 @@ const whatsappScreen = '/whatsapp_home_screen';
 const streamBuilderCounterScreen = '/stream_builder_counter_screen';
 const providerCounterScreen = '/provider_counter_screen';
 const colorsPaletteScreen = '/colors_palette_screen';
+const usersScreen = '/users_screen';

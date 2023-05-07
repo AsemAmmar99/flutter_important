@@ -1,12 +1,11 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_important/core/constants.dart' as screens;
-import 'package:flutter_important/presentation/screens/bloc_counter.dart';
 import 'package:flutter_important/presentation/screens/colors_palette_screen.dart';
 import 'package:flutter_important/presentation/screens/home_screen.dart';
 import 'package:flutter_important/presentation/screens/login_screen.dart';
 import 'package:flutter_important/presentation/screens/onboarding_screen.dart';
-import 'package:flutter_important/presentation/screens/splash_screen.dart';
+import 'package:flutter_important/presentation/screens/users_screen.dart';
 import 'package:flutter_important/presentation/screens/whatsapp/whatsapp_home_layout.dart';
 
 import '../screens/provider_counter.dart';
@@ -16,13 +15,15 @@ class AppRouter {
   late Widget startScreen;
 
   Route? onGenerateRoute(RouteSettings settings){
-    startScreen = const ColorsPaletteScreen();
+    startScreen = const UsersScreen();
 
     switch (settings.name) {
       case '/':
         return MaterialPageRoute(builder: (_) => startScreen);
       case screens.loginScreen:
         return MaterialPageRoute(builder: (_) => const LoginScreen());
+        case screens.usersScreen:
+        return MaterialPageRoute(builder: (_) => const UsersScreen());
         case screens.onBoardingScreen:
         return MaterialPageRoute(builder: (_) => const OnBoardingScreen());
       case screens.whatsappScreen:

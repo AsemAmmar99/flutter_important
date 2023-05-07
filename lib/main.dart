@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_important/business_logic/colors_cubit/colors_cubit.dart';
 import 'package:flutter_important/business_logic/counter_cubit/counter_cubit.dart';
 import 'package:flutter_important/business_logic/providers/counter_provider.dart';
+import 'package:flutter_important/business_logic/users_cubit/users_cubit.dart';
 import 'package:flutter_important/data/data_source/local/my_cache.dart';
 import 'package:flutter_important/presentation/router/app_router.dart';
 import 'package:provider/provider.dart';
@@ -43,6 +44,10 @@ class MyApp extends StatelessWidget {
               ),
               BlocProvider(
                 create: (context) => ColorsCubit(),
+              ),
+              BlocProvider(
+                lazy: false,
+                create: (context) => UsersCubit(),
               ),
             ],
             child: MaterialApp(
