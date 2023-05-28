@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_important/core/constants.dart' as screens;
+import 'package:flutter_important/core/screens.dart' as screens;
 import 'package:flutter_important/core/my_cache_keys.dart';
 import 'package:flutter_important/data/data_source/local/my_cache.dart';
 import 'package:flutter_important/presentation/widgets/default_text.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../core/my_cache_keys.dart';
-import '../../core/constants.dart' as screens;
+import '../../core/screens.dart' as screens;
 import '../../data/data_source/local/my_cache.dart';
 import '../../data/models/onboarding_model.dart';
 

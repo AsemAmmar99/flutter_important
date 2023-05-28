@@ -41,6 +41,8 @@ dependencies:
   bloc: ^8.1.1
 #  http: ^0.13.6
   dio: ^5.1.1
+  google_maps_flutter: ^2.2.7
+  geolocator: ^9.0.2
 
 
 dev_dependencies:

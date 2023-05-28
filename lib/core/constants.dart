@@ -1,11 +1,6 @@
-// screens pushNamed names
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-const splashScreen = '/splash_screen';
-const onBoardingScreen = '/on_boarding_screen';
-const loginScreen = '/login_screen';
-const homeScreen = '/home_screen';
-const whatsappScreen = '/whatsapp_home_screen';
-const streamBuilderCounterScreen = '/stream_builder_counter_screen';
-const providerCounterScreen = '/provider_counter_screen';
-const colorsPaletteScreen = '/colors_palette_screen';
-const usersScreen = '/users_screen';
+CameraPosition initialCameraPosition = const CameraPosition(
+    target: LatLng(30.033333, 31.233334),
+    zoom: 6,
+);

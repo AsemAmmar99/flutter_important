@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_important/core/constants.dart' as screens;
+import 'package:flutter_important/core/screens.dart' as screens;
 import 'package:flutter_important/presentation/widgets/default_material_button.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';

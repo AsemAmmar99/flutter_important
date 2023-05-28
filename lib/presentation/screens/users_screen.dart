@@ -35,35 +35,36 @@ class _UsersScreenState extends State<UsersScreen> {
       ),
       body: BlocBuilder<UsersCubit, UsersState>(
         builder: (context, state) {
-          if (state is UsersLoadingState) {
-            return Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  CircularProgressIndicator(
-                    color: darkBlue,
-                  )
-                ],
-              ),
-            );
-          } else if (state is UsersSuccessState) {
-            return ListView.builder(
-              itemCount: cubit.usersResponse.data.length,
-                itemBuilder: (context, index) =>
-                    UsersListItem(userModel: cubit.usersResponse.data[index]));
-          } else {
-            return Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(
-                    Icons.error,
-                    color: Colors.red,
-                    size: 75.sp,
-                  )
-                ],
-              ),
-            );
+          switch(state.runtimeType){
+            case UsersLoadingState:
+              return Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [
+                    CircularProgressIndicator(
+                      color: darkBlue,
+                    )
+                  ],
+                ),
+              );
+            case UsersSuccessState:
+              return ListView.builder(
+                  itemCount: cubit.usersResponse.data.length,
+                  itemBuilder: (context, index) =>
+                      UsersListItem(userModel: cubit.usersResponse.data[index]));
+            default:
+              return Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.error,
+                      color: Colors.red,
+                      size: 75.sp,
+                    )
+                  ],
+                ),
+              );
           }
         },
       ),
