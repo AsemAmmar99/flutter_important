@@ -13,6 +13,7 @@ import '../screens/stream_builder_counter.dart';
 
 class AppRouter {
   late Widget startScreen;
+  String name = 'Asem';
 
   Route? onGenerateRoute(RouteSettings settings){
     startScreen = const MapScreen();

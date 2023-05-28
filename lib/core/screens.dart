@@ -10,3 +10,4 @@ const providerCounterScreen = '/provider_counter_screen';
 const colorsPaletteScreen = '/colors_palette_screen';
 const usersScreen = '/users_screen';
 const mapScreen = '/map_screen';
+const test = '/';
