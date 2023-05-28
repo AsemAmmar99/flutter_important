@@ -12,3 +12,4 @@ const usersScreen = '/users_screen';
 const mapScreen = '/map_screen';
 const hello = '/hello_screen';
 const test = '/t';
+const hi = '/hi';
