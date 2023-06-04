@@ -4,7 +4,7 @@ import 'package:flutter_important/presentation/widgets/default_material_button.d
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:sizer/sizer.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import '../widgets/default_text.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -36,11 +36,13 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.deepOrange,
         centerTitle: true,
+        leading: IconButton(
+            onPressed: () =>
+                Navigator.pushNamed(context, screens.settingsScreen),
+            icon: const Icon(Icons.settings)),
         title: DefaultText(
-          text: 'Login',
-          textColor: Colors.white,
+          text: AppLocalizations.of(context)!.login,
           textSize: 20.sp,
         ),
       ),
@@ -85,8 +87,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       Icons.person,
                       color: Colors.deepOrange,
                     ),
-                    label: const Text(
-                      'Username',
+                    label: Text(
+                      AppLocalizations.of(context)!.username,
                     ),
                     labelStyle: const TextStyle(color: Colors.deepOrange),
                     enabledBorder: OutlineInputBorder(
@@ -103,7 +105,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   validator: (text) {
                     if (text!.isEmpty) {
-                      return 'Username can\'t be empty..';
+                      return AppLocalizations.of(context)!.usernameValidation;
                     }
                     return null;
                   },
@@ -132,8 +134,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         color: Colors.deepOrange,
                       ),
                     ),
-                    label: const Text(
-                      'Password',
+                    label: Text(
+                      AppLocalizations.of(context)!.password,
                     ),
                     labelStyle: const TextStyle(color: Colors.deepOrange),
                     enabledBorder: OutlineInputBorder(
@@ -150,9 +152,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   validator: (text) {
                     if (text!.isEmpty) {
-                      return 'Password can\'t be empty..';
+                      return AppLocalizations.of(context)!.passwordValidation;
                     } else if (text.length < 6) {
-                      return 'Password can\'t be les than 6 digits..';
+                      return AppLocalizations.of(context)!.passwordSecondValidation;
                     }
                     return null;
                   },
@@ -164,7 +166,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   if (formKey.currentState!.validate()) {
                     setState(() {
                       Fluttertoast.showToast(
-                          msg: "Login Succeeded!",
+                          msg: AppLocalizations.of(context)!.loginSucceeded,
                           toastLength: Toast.LENGTH_SHORT,
                           gravity: ToastGravity.BOTTOM,
                           timeInSecForIosWeb: 3,
@@ -174,14 +176,17 @@ class _LoginScreenState extends State<LoginScreen> {
                     });
                     Navigator.pushNamedAndRemoveUntil(
                         context, screens.homeScreen, (route) => false,
-                        arguments: {'name': userNameController.text, 'password': passwordController.text});
+                        arguments: {
+                          'name': userNameController.text,
+                          'password': passwordController.text
+                        });
                   }
                 },
                 margin: EdgeInsets.symmetric(horizontal: 9.w, vertical: 4.h),
                 radius: 20.sp,
                 splashColor: Colors.white,
                 child: DefaultText(
-                  text: 'Login',
+                  text: AppLocalizations.of(context)!.login,
                   textColor: Colors.white,
                   weight: FontWeight.bold,
                   textSize: 15.sp,
@@ -192,22 +197,19 @@ class _LoginScreenState extends State<LoginScreen> {
                 children: [
                   Expanded(
                     child: Divider(
-                      color: Colors.black,
                       height: 2.h,
                     ),
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 2.w),
                     child: DefaultText(
-                      text: 'Or',
+                      text: AppLocalizations.of(context)!.or,
                       textSize: 18.sp,
-                      textColor: Colors.black,
                       weight: FontWeight.bold,
                     ),
                   ),
                   Expanded(
                     child: Divider(
-                      color: Colors.black,
                       height: 2.h,
                     ),
                   ),
@@ -223,7 +225,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     if (formKey.currentState!.validate()) {
                       setState(() {
                         Fluttertoast.showToast(
-                            msg: "Login with Google Succeeded!",
+                            msg: AppLocalizations.of(context)!.loginWithGoogleSucceeded,
                             toastLength: Toast.LENGTH_SHORT,
                             gravity: ToastGravity.BOTTOM,
                             timeInSecForIosWeb: 3,
@@ -249,9 +251,9 @@ class _LoginScreenState extends State<LoginScreen> {
                           fit: BoxFit.contain,
                         ),
                       ),
-                      const Flexible(
+                      Flexible(
                         child: DefaultText(
-                          text: 'Login with Google',
+                          text: AppLocalizations.of(context)!.loginWithGoogle,
                           textColor: Colors.red,
                         ),
                       ),
@@ -266,15 +268,14 @@ class _LoginScreenState extends State<LoginScreen> {
                   children: [
                     Flexible(
                       child: DefaultText(
-                        text: "Don't have an account?",
+                        text: AppLocalizations.of(context)!.noAccount,
                         textSize: 12.sp,
-                        textColor: Colors.black,
                       ),
                     ),
                     TextButton(
                       onPressed: () {},
                       child: DefaultText(
-                        text: 'Sign Up Now!',
+                        text: AppLocalizations.of(context)!.signUpNow,
                         textSize: 12.sp,
                         textColor: Colors.blue,
                         weight: FontWeight.bold,

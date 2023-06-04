@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
-import '../styles/colors.dart';
 
 class DefaultDivider extends StatelessWidget {
   const DefaultDivider({Key? key}) : super(key: key);
@@ -10,7 +9,10 @@ class DefaultDivider extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Expanded(child: Divider(height: 2.h, color: backgroundColor,))
+        Expanded(
+            child: Divider(
+          height: 2.h,
+        ))
       ],
     );
   }

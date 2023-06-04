@@ -9,6 +9,7 @@ import 'package:flutter_important/presentation/screens/onboarding_screen.dart';
 import 'package:flutter_important/presentation/screens/users_screen.dart';
 import 'package:flutter_important/presentation/screens/whatsapp/whatsapp_home_layout.dart';
 import '../screens/provider_counter.dart';
+import '../screens/settings_screens.dart';
 import '../screens/stream_builder_counter.dart';
 
 class AppRouter {
@@ -16,13 +17,15 @@ class AppRouter {
   String name = 'Asem';
 
   Route? onGenerateRoute(RouteSettings settings){
-    startScreen = const MapScreen();
+    startScreen = const LoginScreen();
 
     switch (settings.name) {
       case '/':
         return MaterialPageRoute(builder: (_) => startScreen);
       case screens.loginScreen:
         return MaterialPageRoute(builder: (_) => const LoginScreen());
+        case screens.settingsScreen:
+        return MaterialPageRoute(builder: (_) => const SettingsScreen());
       case screens.mapScreen:
         return MaterialPageRoute(builder: (_) => const MapScreen());
         case screens.usersScreen:

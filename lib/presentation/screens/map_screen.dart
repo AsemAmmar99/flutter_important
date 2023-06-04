@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_important/core/constant_methods.dart';
 import 'package:flutter_important/presentation/widgets/default_map.dart';
+import 'package:flutter_important/presentation/widgets/default_text.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -32,6 +33,7 @@ class _MapScreenState extends State<MapScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: const DefaultText(text: 'Map Screen',)),
       body: SafeArea(
           child: DefaultMap(
               initialCameraPosition: initialCameraPosition,

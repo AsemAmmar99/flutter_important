@@ -1,0 +1,19 @@
+{
+"@@locale": "en",
+"oppositeLanguage": "العربية",
+"changeLanguageTo": "Change language to",
+"settingsScreen": "Settings Screen",
+"themeMode": "Theme Mode",
+"login": "Login",
+"username": "Username",
+"usernameValidation": "Username can't be empty..",
+"password": "Password",
+"passwordValidation": "Password can't be empty..",
+"passwordSecondValidation": "Password can't be less than 6 digits..",
+"or": "Or",
+"loginWithGoogle": "Login with Google",
+"noAccount": "Don't have an account?",
+"signUpNow": "Sign Up Now!",
+"loginSucceeded": "Login Succeeded!",
+"loginWithGoogleSucceeded": "Login with Google Succeeded!"
+}

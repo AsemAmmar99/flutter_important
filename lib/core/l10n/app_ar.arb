@@ -1,0 +1,19 @@
+{
+"@@locale": "ar",
+"oppositeLanguage": "English",
+"changeLanguageTo": "تغيير اللغة الى",
+"settingsScreen": "شاشة الاعدادات",
+"themeMode": "الوضع",
+"login": "تسجيل الدخول",
+"username": "اسم المستخدم",
+"usernameValidation": "اسم المستخدم يجب ألا يكون فارغ..",
+"password": "كلمة المرور",
+"passwordValidation": "كلمة المرور يجب ألا تكون فارغة..",
+"passwordSecondValidation": "كلمة المرور يجب ألا تقل عن 6 أرقام..",
+"or": "أو",
+"loginWithGoogle": "سجل باستخدام جوجل",
+"noAccount": "ليس لديك حساب؟",
+"signUpNow": "سجل الأن!",
+"loginSucceeded": "تم تسجيل الدخول بنجاح!",
+"loginWithGoogleSucceeded": "تم تسجيل الدخول باستخدام جوجل بنجاح!"
+}

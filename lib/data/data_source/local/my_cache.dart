@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter_important/core/my_cache_keys.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -54,5 +56,15 @@ class MyCache {
 
   static void clearCache(){
     preferences!.clear();
+  }
+
+  static String getCurrentLanguage(){
+    if(preferences!.getString(MyCacheKeys.appLanguage.name) == null){
+      String currentDeviceLanguage = Platform.localeName.substring(0, 2);
+      putString(key: MyCacheKeys.appLanguage, value: currentDeviceLanguage);
+      return currentDeviceLanguage;
+    }else{
+      return getString(key: MyCacheKeys.appLanguage);
+    }
   }
 }
